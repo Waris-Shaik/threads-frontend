@@ -1,0 +1,14 @@
+.icon-container {
+  border-radius: 50%;
+  padding: 8px;
+  width: 35px;
+  height: 35px;
+  transition: background-color 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-container:hover {
+  background-color: #1e1e1e;
+}
