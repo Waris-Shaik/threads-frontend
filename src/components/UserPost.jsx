@@ -1,10 +1,19 @@
-import { Avatar, Box, Flex, Menu, MenuButton, MenuList, MenuItem, Portal, Text, Image  } from "@chakra-ui/react"
-import { BsThreeDots } from "react-icons/bs"
-import { Link } from "react-router-dom"
-import Actions from "./Actions"
-import { useState } from "react"
-
-
+import {
+  Avatar,
+  Box,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Portal,
+  Text,
+  Image,
+} from "@chakra-ui/react";
+import { BsThreeDots } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import Actions from "./Actions";
+import { useState } from "react";
 
 const UserPost = () => {
   return (
@@ -61,7 +70,7 @@ const UserPost = () => {
                 <Text fontSize={"sm"} fontWeight={"bold"}>
                   username
                 </Text>
-               {true &&  <Image w={4} h={4} ml={1} src="/verified.png"></Image>}
+                {true && <Image w={4} h={4} ml={1} src="/verified.png"></Image>}
               </Flex>
 
               <Flex gap={2} alignItems={"center"}>
@@ -69,17 +78,16 @@ const UserPost = () => {
                   1d
                 </Text>
                 <Menu>
-                    <MenuButton>
+                  <MenuButton>
                     <BsThreeDots className="icon-container" />
-                    </MenuButton>
-                    <Portal>
+                  </MenuButton>
+                  <Portal>
                     <MenuList>
-                        <MenuItem
-                        >Edit</MenuItem>
-                        <MenuItem>Delete</MenuItem>
-                        <MenuItem>Download</MenuItem>
+                      <MenuItem>Edit</MenuItem>
+                      <MenuItem>Delete</MenuItem>
+                      <MenuItem>Download</MenuItem>
                     </MenuList>
-                    </Portal>
+                  </Portal>
                 </Menu>
               </Flex>
             </Flex>
@@ -89,23 +97,18 @@ const UserPost = () => {
                 postTitle
               </Text>
 
-
-                <Box
-                  borderRadius={6}
-                  overflow={"hidden"}
-                  border={"1px solid"}
-                  borderColor={"gray.light"}
-                >
-                  <Image src={'/post1.png'} w={"full"} />
-                </Box>
-
-
-
-
+              <Box
+                borderRadius={6}
+                overflow={"hidden"}
+                border={"1px solid"}
+                borderColor={"gray.light"}
+              >
+                <Image src={"/post1.png"} w={"full"} />
+              </Box>
             </Flex>
 
             <Flex gap={3} my={1}>
-              <Actions  />
+              <Actions />
             </Flex>
 
             {/* <Flex gap={2} alignItems={"center"}>
@@ -128,7 +131,7 @@ const UserPost = () => {
         </Flex>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default UserPost
+export default UserPost;

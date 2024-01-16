@@ -7,17 +7,19 @@ import refreshAtom from "../atoms/refreshAtom";
 //   username = username.split("@")[1];
 
 const useGetUserProfile = () => {
-    let { username } = useParams();
-    username = username.split("@")[1];
+  let { username } = useParams();
+  username = username.split("@")[1];
   const showToast = useShowToast();
   const [user, setUser] = useState(null);
-  const [ loading ,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const refresh = useRecoilValue(refreshAtom);
 
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`/api/users/profile/${username}`);
+        const res = await fetch(`/api/users/profile/${username}`, {
+          credentials: true,
+        });
         const data = await res.json();
         if (data.error) {
           setTimeout(() => {

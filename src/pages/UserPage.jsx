@@ -22,15 +22,14 @@ const UserPage = () => {
   const [myPosts, setMyPosts] = useState([]);
   const [myreplies, setMyReplies] = useState([]);
   username = username.split("@")[1];
-  const {user, loading, setLoading} = useGetUserProfile();
-  
+  const { user, loading, setLoading } = useGetUserProfile();
 
-  useEffect(() => { 
-  
-
+  useEffect(() => {
     const getMyPosts = async () => {
       try {
-        const res = await fetch(`/api/posts/user/${username}`);
+        const res = await fetch(`/api/posts/user/${username}`, {
+          credentials: true,
+        });
         const data = await res.json();
         // console.log(data);
         if (data.error) {
@@ -43,24 +42,27 @@ const UserPage = () => {
       }
     };
 
-    const getMyReplies = async () =>{
+    const getMyReplies = async () => {
       // if(!user) return null;
       try {
-        const res = await fetch('/api/posts/myreplies');
+        const res = await fetch("/api/posts/myreplies", { credentials: true });
         const data = await res.json();
-        
-        if(data.error){
+
+        if (data.error) {
           showToast("error", data.message, "error");
           return;
         }
 
-        setMyReplies(data.myreplies)
+        setMyReplies(data.myreplies);
         // console.log(data.myreplies)
-        
       } catch (error) {
-        showToast("Error", "An error occured while getting my replies", "error");
+        showToast(
+          "Error",
+          "An error occured while getting my replies",
+          "error"
+        );
       }
-    }
+    };
 
     getMyPosts();
     getMyReplies();
@@ -85,20 +87,23 @@ const UserPage = () => {
         </Box>
       )}
 
-        {toggleAtomStatus === "threads" ? <>
+      {toggleAtomStatus === "threads" ? (
+        <>
           {myPosts &&
-        myPosts.map((post) => (
-          <Post key={post._id} post={post} postedby={post.postedby} />
-        ))}
-        </> : <>
-        {myreplies && 
-         myreplies.map((post)=> post.replies.map((reply)=>(
-          <RepliesPage key={reply._id} reply={reply} replyInfo={post} />
-         )) )
-        }
-        </> }
-
-      
+            myPosts.map((post) => (
+              <Post key={post._id} post={post} postedby={post.postedby} />
+            ))}
+        </>
+      ) : (
+        <>
+          {myreplies &&
+            myreplies.map((post) =>
+              post.replies.map((reply) => (
+                <RepliesPage key={reply._id} reply={reply} replyInfo={post} />
+              ))
+            )}
+        </>
+      )}
     </>
   );
 };

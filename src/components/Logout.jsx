@@ -17,6 +17,7 @@ const Logout = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: true,
       });
 
       const data = await res.json();

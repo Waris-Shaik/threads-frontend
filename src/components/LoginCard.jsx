@@ -46,8 +46,8 @@ const LoginCard = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: true,
         body: JSON.stringify(formData),
-        credentials:true,
       });
 
       const data = await res.json();

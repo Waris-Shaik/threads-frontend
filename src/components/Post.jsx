@@ -33,6 +33,7 @@ const Post = ({ post, postedby }) => {
     try {
       const res = await fetch(`/api/posts/delete/${post?._id}`, {
         method: "DELETE",
+        credentials: true,
       });
       const data = await res.json();
       if (data.error) {
@@ -50,7 +51,9 @@ const Post = ({ post, postedby }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`/api/users/profile/` + postedby);
+        const res = await fetch(`/api/users/profile/` + postedby, {
+          credentials: true,
+        });
         const data = await res.json();
         if (data.error) {
           showToast("Error", data.error, "error");
@@ -94,11 +97,13 @@ const Post = ({ post, postedby }) => {
                 <Text textAlign={"center"}>🥱</Text>
               )}
 
-              {post.replies[post.replies.length -1] && (
+              {post.replies[post.replies.length - 1] && (
                 <Avatar
                   size={"xs"}
-                  name={post.replies[post.replies.length -1]?.username}
-                  src={post.replies[post.replies.length -1]?.userProfilePicture}
+                  name={post.replies[post.replies.length - 1]?.username}
+                  src={
+                    post.replies[post.replies.length - 1]?.userProfilePicture
+                  }
                   position={"absolute"}
                   top={"0px"}
                   left="15px"
@@ -106,11 +111,13 @@ const Post = ({ post, postedby }) => {
                 ></Avatar>
               )}
 
-              {post.replies[post.replies.length -2] && (
+              {post.replies[post.replies.length - 2] && (
                 <Avatar
                   size={"xs"}
-                  name={post.replies[post.replies.length -2]?.username}
-                  src={post.replies[post.replies.length -2]?.userProfilePicture}
+                  name={post.replies[post.replies.length - 2]?.username}
+                  src={
+                    post.replies[post.replies.length - 2]?.userProfilePicture
+                  }
                   position={"absolute"}
                   bottom={"0px"}
                   right={"-5px"}
@@ -118,11 +125,11 @@ const Post = ({ post, postedby }) => {
                 ></Avatar>
               )}
 
-              {post.replies[post.replies.length -3] && (
+              {post.replies[post.replies.length - 3] && (
                 <Avatar
                   size={"xs"}
-                  name={post.replies[post.replies.length -3]?.username}
-                  src={post.replies[post.replies.length -3].userProfilePicture}
+                  name={post.replies[post.replies.length - 3]?.username}
+                  src={post.replies[post.replies.length - 3].userProfilePicture}
                   position={"absolute"}
                   bottom={"0px"}
                   left="5px"
@@ -188,7 +195,7 @@ const Post = ({ post, postedby }) => {
               </Flex>
             </Flex>
 
-            <Flex flexDirection={"column"} mt={-1}  w={"60%"} >
+            <Flex flexDirection={"column"} mt={-1} w={"60%"}>
               {post?.text && (
                 <Text fontSize={"sm"} mb={2} ref={copyText}>
                   {post?.text}

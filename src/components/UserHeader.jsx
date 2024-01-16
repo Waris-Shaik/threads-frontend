@@ -52,6 +52,7 @@ const UserHeader = ({ user }) => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: true,
       });
 
       const data = await res.json();
@@ -157,23 +158,42 @@ const UserHeader = ({ user }) => {
       <Flex w={"full"}>
         <Flex
           flex={1}
-          borderBottom={toggleAtomStatus === "threads" ? "1.5px solid white" : "1.5px solid gray"}
-
+          borderBottom={
+            toggleAtomStatus === "threads"
+              ? "1.5px solid white"
+              : "1.5px solid gray"
+          }
           justifyContent={"center"}
           pb={3}
           cursor={"pointer"}
         >
-          <Button _hover={{bg:"none"}}  onClick={()=>setToggleAtomStatus("threads") } bg={"none"} ><Text fontWeight={"bold"}>Threads</Text></Button>
+          <Button
+            _hover={{ bg: "none" }}
+            onClick={() => setToggleAtomStatus("threads")}
+            bg={"none"}
+          >
+            <Text fontWeight={"bold"}>Threads</Text>
+          </Button>
         </Flex>
         <Flex
           flex={1}
-          borderBottom={toggleAtomStatus !== "threads" ? "1.5px solid white" : "1.5px solid gray"}
+          borderBottom={
+            toggleAtomStatus !== "threads"
+              ? "1.5px solid white"
+              : "1.5px solid gray"
+          }
           justifyContent={"center"}
           pb={3}
           cursor={"pointer"}
           color={"gray.light"}
         >
-          <Button _hover={{bg:"none"}} onClick={()=> setToggleAtomStatus("replies")} bg={"none"}><Text fontWeight={"bold"}>Replies</Text></Button>
+          <Button
+            _hover={{ bg: "none" }}
+            onClick={() => setToggleAtomStatus("replies")}
+            bg={"none"}
+          >
+            <Text fontWeight={"bold"}>Replies</Text>
+          </Button>
         </Flex>
       </Flex>
     </VStack>

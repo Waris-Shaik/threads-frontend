@@ -44,7 +44,7 @@ const UpdateProfilePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log({ ...formData, profilepicture: imageUrl });
-    if(updating) return;
+    if (updating) return;
     setUpdating(true);
     try {
       const res = await fetch(`/api/users/update/${user?._id}`, {
@@ -52,6 +52,7 @@ const UpdateProfilePage = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: true,
 
         body: JSON.stringify({ ...formData, profilepicture: imageUrl }),
       });
@@ -69,7 +70,7 @@ const UpdateProfilePage = () => {
       }
     } catch (error) {
       showToast("Error", "An error occured during upating profile", "error");
-    }finally{
+    } finally {
       setUpdating(false);
     }
   };
@@ -193,7 +194,8 @@ const UpdateProfilePage = () => {
               _hover={{
                 bg: "green.500",
               }}
-              type="submit" isLoading={updating}
+              type="submit"
+              isLoading={updating}
             >
               Submit
             </Button>

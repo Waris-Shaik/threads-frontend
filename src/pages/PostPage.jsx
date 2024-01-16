@@ -52,6 +52,7 @@ const PostPage = () => {
     try {
       const res = await fetch(`/api/posts/delete/${post?._id}`, {
         method: "DELETE",
+        credentials: true,
       });
       const data = await res.json();
       if (data.error) {
@@ -69,7 +70,7 @@ const PostPage = () => {
   useEffect(() => {
     const getSinglePost = async () => {
       try {
-        const res = await fetch(`/api/posts/` + pid);
+        const res = await fetch(`/api/posts/` + pid, { credentials: true });
         const data = await res.json();
         // console.log(data);
         if (data.error) {
@@ -105,7 +106,11 @@ const PostPage = () => {
       <Flex py={4}>
         {/* 1stflex header starts */}
         <Flex w={"full"} alignItems={"center"} gap={3}>
-          <Avatar src={user?.profilepicture} size={"md"} name={user?.username} />
+          <Avatar
+            src={user?.profilepicture}
+            size={"md"}
+            name={user?.username}
+          />
 
           <Flex>
             <Text fontSize={"sm"} fontWeight={"bold"}>

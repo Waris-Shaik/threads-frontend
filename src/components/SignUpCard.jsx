@@ -46,8 +46,8 @@ const SignupCard = () => {
         headers: {
           "Content-type": "application/json",
         },
+        credentials: true,
         body: JSON.stringify(formData),
-        credentials:true,
       });
 
       const data = await res.json();
@@ -63,7 +63,7 @@ const SignupCard = () => {
 
       // 1st step putting userInfo in localStorage window
       localStorage.setItem("user-threads", JSON.stringify(data));
-      setUser(data);// setting global level user
+      setUser(data); // setting global level user
     } catch (error) {
       showToast("Error", data.error, "error");
     }

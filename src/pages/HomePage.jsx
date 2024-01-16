@@ -15,14 +15,14 @@ const HomePage = () => {
   useEffect(() => {
     const getFeedPosts = async () => {
       try {
-        const res = await fetch("/api/posts/feed");
+        const res = await fetch("/api/posts/feed", { credentials: true });
         const data = await res.json();
         // console.log(data);
         if (data.error) {
           showToast("Error", data.error, "error");
           return;
         }
-          // showToast("Success", "", "success");
+        // showToast("Success", "", "success");
         setPosts(data.posts);
       } catch (error) {
         showToast(
@@ -31,7 +31,7 @@ const HomePage = () => {
           "error"
         );
       } finally {
-          setLoading(false);
+        setLoading(false);
       }
     };
 
@@ -48,7 +48,7 @@ const HomePage = () => {
 
   if (!loading && posts?.length === 0) {
     return (
-      <Box display={"flex"} justifyContent={"center"} >
+      <Box display={"flex"} justifyContent={"center"}>
         <Text>No posts to display please follow some accounts.</Text>
       </Box>
     );
@@ -56,7 +56,7 @@ const HomePage = () => {
 
   return (
     <>
-      {posts?.map((post)=>(
+      {posts?.map((post) => (
         <Post post={post} key={post._id} postedby={post.postedby} />
       ))}
     </>

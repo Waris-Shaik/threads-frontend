@@ -50,6 +50,7 @@ const Actions = ({ post }) => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: true,
       });
 
       const data = await res.json();
@@ -94,6 +95,7 @@ const Actions = ({ post }) => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: true,
         body: JSON.stringify(replyPost),
       });
 

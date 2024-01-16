@@ -35,7 +35,7 @@ const CreatePost = () => {
   const currentUser = useRecoilValue(userAtom); // logged in user lsw; globally
   const showToast = useShowToast();
   const [loading, setLoading] = useState(false);
-  const [refresh,setRefresh] = useRecoilState(refreshAtom);
+  const [refresh, setRefresh] = useRecoilState(refreshAtom);
 
   const openImage = () => {
     imageRef.current.click();
@@ -69,6 +69,7 @@ const CreatePost = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: true,
         body: JSON.stringify(postData),
       });
 
@@ -86,7 +87,6 @@ const CreatePost = () => {
         onClose();
         showToast("Success", data.message, "success");
       }, 2000);
-      
     } catch (error) {
       showToast("Error", "An error occured during post created", "error");
     } finally {
@@ -105,7 +105,7 @@ const CreatePost = () => {
         leftIcon={<AddIcon />}
         bg={useColorModeValue("gray.300", "gray.dark")}
         onClick={onOpen}
-        size={{base : "sm", sm: "md", md: "lg"}}
+        size={{ base: "sm", sm: "md", md: "lg" }}
       >
         Post
       </Button>
