@@ -38,7 +38,7 @@ const Comments = ({ reply, postId, lastReply }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: true,
+          credentials: "include",
         }
       );
 

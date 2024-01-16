@@ -46,7 +46,7 @@ const SignupCard = () => {
         headers: {
           "Content-type": "application/json",
         },
-        credentials: true,
+        credentials: "include",
         body: JSON.stringify(formData),
       });
 

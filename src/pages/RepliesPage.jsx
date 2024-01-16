@@ -29,7 +29,7 @@ const RepliesPage = ({ reply, replyInfo }) => {
       try {
         const res = await fetch(
           `/api/users/profile/` + reply?.userId.toString(),
-          { credentials: true }
+          { credentials: "include" }
         );
         const data = await res.json();
 
@@ -47,7 +47,7 @@ const RepliesPage = ({ reply, replyInfo }) => {
       try {
         const res = await fetch(
           `/api/users/profile/` + replyInfo?.postedby.toString(),
-          { credentials: true }
+          { credentials: "include" }
         );
         const data = await res.json();
 

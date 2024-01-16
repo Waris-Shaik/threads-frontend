@@ -18,7 +18,7 @@ const useGetUserProfile = () => {
     const getUser = async () => {
       try {
         const res = await fetch(`/api/users/profile/${username}`, {
-          credentials: true,
+          credentials: "include",
         });
         const data = await res.json();
         if (data.error) {

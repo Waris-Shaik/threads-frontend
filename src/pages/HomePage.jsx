@@ -15,7 +15,7 @@ const HomePage = () => {
   useEffect(() => {
     const getFeedPosts = async () => {
       try {
-        const res = await fetch("/api/posts/feed", { credentials: true });
+        const res = await fetch("/api/posts/feed", { credentials: "include" });
         const data = await res.json();
         // console.log(data);
         if (data.error) {

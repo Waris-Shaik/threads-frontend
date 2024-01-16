@@ -46,7 +46,7 @@ const LoginCard = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: true,
+        credentials: "include",
         body: JSON.stringify(formData),
       });
 
@@ -64,6 +64,7 @@ const LoginCard = () => {
         }, 1000);
       }
     } catch (error) {
+      console.log(error, "@logincard");
       showToast("Error", "An error occured during login", "error");
     } finally {
       setTimeout(() => {

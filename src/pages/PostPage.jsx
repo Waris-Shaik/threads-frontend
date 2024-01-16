@@ -52,7 +52,7 @@ const PostPage = () => {
     try {
       const res = await fetch(`/api/posts/delete/${post?._id}`, {
         method: "DELETE",
-        credentials: true,
+        credentials: "include",
       });
       const data = await res.json();
       if (data.error) {
@@ -70,7 +70,7 @@ const PostPage = () => {
   useEffect(() => {
     const getSinglePost = async () => {
       try {
-        const res = await fetch(`/api/posts/` + pid, { credentials: true });
+        const res = await fetch(`/api/posts/` + pid, { credentials: "include" });
         const data = await res.json();
         // console.log(data);
         if (data.error) {

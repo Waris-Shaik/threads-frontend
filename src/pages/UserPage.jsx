@@ -28,7 +28,7 @@ const UserPage = () => {
     const getMyPosts = async () => {
       try {
         const res = await fetch(`/api/posts/user/${username}`, {
-          credentials: true,
+          credentials: "include",
         });
         const data = await res.json();
         // console.log(data);
@@ -45,7 +45,7 @@ const UserPage = () => {
     const getMyReplies = async () => {
       // if(!user) return null;
       try {
-        const res = await fetch("/api/posts/myreplies", { credentials: true });
+        const res = await fetch("/api/posts/myreplies", { credentials: "include" });
         const data = await res.json();
 
         if (data.error) {

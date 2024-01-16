@@ -33,7 +33,7 @@ const Post = ({ post, postedby }) => {
     try {
       const res = await fetch(`/api/posts/delete/${post?._id}`, {
         method: "DELETE",
-        credentials: true,
+        credentials: "include",
       });
       const data = await res.json();
       if (data.error) {
@@ -52,7 +52,7 @@ const Post = ({ post, postedby }) => {
     const getUser = async () => {
       try {
         const res = await fetch(`/api/users/profile/` + postedby, {
-          credentials: true,
+          credentials: "include",
         });
         const data = await res.json();
         if (data.error) {
