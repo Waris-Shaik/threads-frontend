@@ -17,6 +17,7 @@ import useShowToast from "../hooks/useShowTaost";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
+import { server } from "../main";
 
 const RepliesPage = ({ reply, replyInfo }) => {
   const showToast = useShowToast();
@@ -28,7 +29,7 @@ const RepliesPage = ({ reply, replyInfo }) => {
     const getUser = async () => {
       try {
         const res = await fetch(
-          `/api/users/profile/` + reply?.userId.toString(),
+          `${server}/api/users/profile/` + reply?.userId.toString(),
           { credentials: "include" }
         );
         const data = await res.json();
@@ -46,7 +47,7 @@ const RepliesPage = ({ reply, replyInfo }) => {
     const getThatUser = async () => {
       try {
         const res = await fetch(
-          `/api/users/profile/` + replyInfo?.postedby.toString(),
+          `${server}/api/users/profile/` + replyInfo?.postedby.toString(),
           { credentials: "include" }
         );
         const data = await res.json();

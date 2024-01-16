@@ -25,6 +25,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import useShowToast from "../hooks/useShowTaost";
 import refreshAtom from "../atoms/refreshAtom";
+import { server } from "../main";
 
 const MAX_CHAR = 500;
 const CreatePost = () => {
@@ -64,7 +65,7 @@ const CreatePost = () => {
     }
     setLoading(true);
     try {
-      const res = await fetch(`/api/posts/new`, {
+      const res = await fetch(`${server}/api/posts/new`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -24,6 +24,7 @@ import refreshAtom from "../atoms/refreshAtom";
 import useGetUserProfile from "../hooks/useGetUserProfile";
 import { formatDistanceToNow } from "date-fns";
 import userAtom from "../atoms/userAtom";
+import { server } from "../main";
 
 const PostPage = () => {
   const [post, setPost] = useState([]);
@@ -50,7 +51,7 @@ const PostPage = () => {
     // console.log(post._id);
     if (!post || !post._id) return showToast("", "", "error");
     try {
-      const res = await fetch(`/api/posts/delete/${post?._id}`, {
+      const res = await fetch(`${server}/api/posts/delete/${post?._id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -70,7 +71,9 @@ const PostPage = () => {
   useEffect(() => {
     const getSinglePost = async () => {
       try {
-        const res = await fetch(`/api/posts/` + pid, { credentials: "include" });
+        const res = await fetch(`${server}/api/posts/` + pid, {
+          credentials: "include",
+        });
         const data = await res.json();
         // console.log(data);
         if (data.error) {

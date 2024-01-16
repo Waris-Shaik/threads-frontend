@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useShowToast from "./useShowTaost";
 import { useRecoilValue } from "recoil";
 import refreshAtom from "../atoms/refreshAtom";
+import { server } from "../main";
 
 //   username = username.split("@")[1];
 
@@ -17,7 +18,7 @@ const useGetUserProfile = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`/api/users/profile/${username}`, {
+        const res = await fetch(`${server}/api/users/profile/${username}`, {
           credentials: "include",
         });
         const data = await res.json();

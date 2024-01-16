@@ -19,6 +19,7 @@ import { formatDistanceToNow } from "date-fns";
 import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import refreshAtom from "../atoms/refreshAtom";
+import { server } from "../main";
 
 const Post = ({ post, postedby }) => {
   // fetch the user
@@ -31,7 +32,7 @@ const Post = ({ post, postedby }) => {
 
   const handleDeletePost = async () => {
     try {
-      const res = await fetch(`/api/posts/delete/${post?._id}`, {
+      const res = await fetch(`${server}/api/posts/delete/${post?._id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -51,7 +52,7 @@ const Post = ({ post, postedby }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`/api/users/profile/` + postedby, {
+        const res = await fetch(`${server}/api/users/profile/` + postedby, {
           credentials: "include",
         });
         const data = await res.json();

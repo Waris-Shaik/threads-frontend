@@ -16,6 +16,7 @@ import { useRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";
 import useShowToast from "../hooks/useShowTaost";
 import usePreviewImage from "../hooks/usePreviewImage";
+import { server } from "../main";
 
 const UpdateProfilePage = () => {
   const fileRef = useRef(null);
@@ -47,7 +48,7 @@ const UpdateProfilePage = () => {
     if (updating) return;
     setUpdating(true);
     try {
-      const res = await fetch(`/api/users/update/${user?._id}`, {
+      const res = await fetch(`${server}/api/users/update/${user?._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -24,6 +24,7 @@ import useShowToast from "../hooks/useShowTaost";
 import refreshAtom from "../atoms/refreshAtom";
 import { BsImageFill } from "react-icons/bs";
 import usePreviewImage from "../hooks/usePreviewImage";
+import { server } from "../main";
 
 const MAX_CHAR = 300;
 const Actions = ({ post }) => {
@@ -45,7 +46,7 @@ const Actions = ({ post }) => {
     if (isLiking) return;
     setIsLiking(true);
     try {
-      const res = await fetch(`/api/posts/toggleLike/` + post?._id, {
+      const res = await fetch(`${server}/api/posts/toggleLike/` + post?._id, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +91,7 @@ const Actions = ({ post }) => {
     setIsReplying(true);
     try {
       const replyPost = { text: reply, image: imageUrl };
-      const res = await fetch("/api/posts/reply/" + post?._id, {
+      const res = await fetch(`${server}/api/posts/reply/` + post?._id, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

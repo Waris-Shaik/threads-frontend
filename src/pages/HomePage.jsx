@@ -5,6 +5,7 @@ import useShowToast from "../hooks/useShowTaost";
 import Post from "../components/Post";
 import { useRecoilValue } from "recoil";
 import refreshAtom from "../atoms/refreshAtom";
+import { server } from "../main";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -15,7 +16,9 @@ const HomePage = () => {
   useEffect(() => {
     const getFeedPosts = async () => {
       try {
-        const res = await fetch("/api/posts/feed", { credentials: "include" });
+        const res = await fetch(`${server}/api/posts/feed`, {
+          credentials: "include",
+        });
         const data = await res.json();
         // console.log(data);
         if (data.error) {

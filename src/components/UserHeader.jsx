@@ -19,6 +19,7 @@ import userAtom from "../atoms/userAtom";
 import useShowToast from "../hooks/useShowTaost";
 import refreshAtom from "../atoms/refreshAtom";
 import toggleAtom from "../atoms/toggleAtom";
+import { server } from "../main";
 
 const UserHeader = ({ user }) => {
   const setToggleAtomStatus = useSetRecoilState(toggleAtom);
@@ -47,7 +48,7 @@ const UserHeader = ({ user }) => {
 
     setUpdating(true);
     try {
-      const res = await fetch(`/api/users/toggleFollow/${user._id}`, {
+      const res = await fetch(`${server}/api/users/toggleFollow/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

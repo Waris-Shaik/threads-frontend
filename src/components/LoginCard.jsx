@@ -20,6 +20,7 @@ import { useSetRecoilState } from "recoil";
 import authScreenAtom from "../atoms/authAtom";
 import useShowToast from "../hooks/useShowTaost";
 import userAtom from "../atoms/userAtom";
+import { server } from "../main";
 
 const initialState = {
   text: "",
@@ -41,7 +42,7 @@ const LoginCard = () => {
   const handleSignup = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/users/login", {
+      const res = await fetch(`${server}/api/users/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

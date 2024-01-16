@@ -35,6 +35,7 @@ const colors = {
 };
 
 const theme = extendTheme({ config, styles, colors });
+export const server = "https://threads-mekn.onrender.com";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -20,6 +20,7 @@ import useShowToast from "../hooks/useShowTaost";
 import { useRecoilState, useRecoilValue } from "recoil";
 import refreshAtom from "../atoms/refreshAtom";
 import userAtom from "../atoms/userAtom";
+import { server } from "../main";
 
 const Comments = ({ reply, postId, lastReply }) => {
   const showToast = useShowToast();
@@ -32,7 +33,7 @@ const Comments = ({ reply, postId, lastReply }) => {
     if (!currentUser) return showToast("", "Please login to delete", "error");
     try {
       const res = await fetch(
-        `/api/posts/${postId}/reply/delete/${reply?._id}`,
+        `${server}/api/posts/${postId}/reply/delete/${reply?._id}`,
         {
           method: "DELETE",
           headers: {

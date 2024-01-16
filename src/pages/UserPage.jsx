@@ -11,6 +11,7 @@ import Post from "../components/Post";
 import useGetUserProfile from "../hooks/useGetUserProfile";
 import toggleAtom from "../atoms/toggleAtom";
 import RepliesPage from "./RepliesPage";
+import { server } from "../main";
 
 const UserPage = () => {
   let { username } = useParams();
@@ -27,7 +28,7 @@ const UserPage = () => {
   useEffect(() => {
     const getMyPosts = async () => {
       try {
-        const res = await fetch(`/api/posts/user/${username}`, {
+        const res = await fetch(`${server}/api/posts/user/${username}`, {
           credentials: "include",
         });
         const data = await res.json();
@@ -45,7 +46,9 @@ const UserPage = () => {
     const getMyReplies = async () => {
       // if(!user) return null;
       try {
-        const res = await fetch("/api/posts/myreplies", { credentials: "include" });
+        const res = await fetch(`${server}/api/posts/myreplies`, {
+          credentials: "include",
+        });
         const data = await res.json();
 
         if (data.error) {
