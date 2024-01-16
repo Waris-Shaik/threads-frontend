@@ -8,7 +8,7 @@ export default defineConfig({
     proxy:{
       '/api': {
         target : 'https://threads-mekn.onrender.com',
-        changeOrigin:true,
+        changeOrigin:false,
         secure:false
       }
     }
