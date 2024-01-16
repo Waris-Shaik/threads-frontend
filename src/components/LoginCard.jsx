@@ -64,7 +64,7 @@ const LoginCard = () => {
         }, 1000);
       }
     } catch (error) {
-      console.log(error, "@logincard");
+      console.log(error);
       showToast("Error", "An error occured during login", "error");
     } finally {
       setTimeout(() => {
