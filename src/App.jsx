@@ -18,7 +18,7 @@ const App = () => {
   const user = useRecoilValue(userAtom);
   // console.log('global level user is', user);
   return (
-    <Container maxW="620px">
+    <Container maxW="620px"> 
       <Header />
       <Routes>
         
