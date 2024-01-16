@@ -47,6 +47,7 @@ const SignupCard = () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify(formData),
+        credentials:true,
       });
 
       const data = await res.json();
